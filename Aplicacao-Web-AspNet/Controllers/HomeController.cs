@@ -17,14 +17,16 @@ namespace Aplicacao_Web_AspNet.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Me chamo Libni Evanio, sou um desenvolvedor junior, construo aplicações back end e front end.";
+            ViewData["Email"] = "libnievanio@gmail.com";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Seu contato para a pagina.";
+
 
             return View();
         }
