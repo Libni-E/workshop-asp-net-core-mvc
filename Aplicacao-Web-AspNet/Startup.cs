@@ -37,7 +37,8 @@ namespace Aplicacao_Web_AspNet
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<Aplicacao_Web_AspNetContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("Aplicacao_Web_AspNetContext")));
+                    options.UseMySql(Configuration.GetConnectionString("Aplicacao_Web_AspNetContext"), builder =>
+                        builder.MigrationsAssembly("Aplicacao_Web_AspNet")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
