@@ -39,14 +39,16 @@ namespace Aplicacao_Web_AspNet
             services.AddDbContext<Aplicacao_Web_AspNetContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("Aplicacao_Web_AspNetContext"), builder =>
                         builder.MigrationsAssembly("Aplicacao_Web_AspNet")));
+            services.AddScoped<SeedingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {
