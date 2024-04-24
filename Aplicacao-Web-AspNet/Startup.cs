@@ -42,6 +42,7 @@ namespace Aplicacao_Web_AspNet
                         builder.MigrationsAssembly("Aplicacao_Web_AspNet")));
             services.AddScoped<SeedingService>();
             services.AddScoped<SellerService>();
+            services.AddScoped<DepartmentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
