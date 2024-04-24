@@ -8,14 +8,24 @@ namespace Aplicacao_Web_AspNet.Models
     public class Seller
     {
         public int Id { get; set; }
+
+        [Required (ErrorMessage ="{0} Requerido")]
+        [StringLength(60, MinimumLength = 3, ErrorMessage ="{0} deve ser entre {2} a {1}")] // chaves 0 pega o nome do atributo
         public string Name { get; set; }
+
+        [EmailAddress(ErrorMessage = "Enter com um {0} valido")]
         [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "{0} Requerido")]
         public string  Email { get; set; }
 
+        [Required(ErrorMessage = "{0} Requerido")]
         [Display (Name = "Birth Date")]
         [DataType (DataType.Date)]
         public DateTime BirthDate { get; set; }
 
+
+        [Required(ErrorMessage = "{0} Requerido")]
+        [Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]
         [Display (Name ="Base Salary")]
         [DataType(DataType.Currency)]
         public double BaseSalary { get; set; }
