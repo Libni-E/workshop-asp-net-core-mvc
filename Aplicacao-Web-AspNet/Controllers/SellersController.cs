@@ -1,4 +1,5 @@
-﻿using Aplicacao_Web_AspNet.Services;
+﻿using Aplicacao_Web_AspNet.Models;
+using Aplicacao_Web_AspNet.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aplicacao_Web_AspNet.Controllers
@@ -14,6 +15,19 @@ namespace Aplicacao_Web_AspNet.Controllers
         {
             var list = _sellerService.FindAll();
             return View(list);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]//evitar que enviem itens maliciosos
+        public IActionResult Create(Seller seller) 
+        {
+            _sellerService.Insert(seller);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
