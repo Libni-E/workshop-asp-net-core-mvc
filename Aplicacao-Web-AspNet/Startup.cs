@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Aplicacao_Web_AspNet.Data;
 using Aplicacao_Web_AspNet.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace Aplicacao_Web_AspNet
 {
@@ -48,6 +50,15 @@ namespace Aplicacao_Web_AspNet
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
+            var enUs = new CultureInfo("en-US");
+            var localizationOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(enUs),
+                SupportedCultures = new List<CultureInfo> { enUs },
+                SupportedUICultures = new List<CultureInfo> { enUs },
+
+            };
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
