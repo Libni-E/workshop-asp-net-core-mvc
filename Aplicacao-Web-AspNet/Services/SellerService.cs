@@ -1,6 +1,7 @@
 ﻿using Aplicacao_Web_AspNet.Models;
 using Aplicacao_Web_AspNet.Data;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Aplicacao_Web_AspNet.Services
@@ -27,7 +28,7 @@ namespace Aplicacao_Web_AspNet.Services
 
         public Seller FindById(int id)
         {
-            return _context.Seller.FirstOrDefault(obj => obj.Id == id);
+            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
         }
         public void Remove(int id)
         {
