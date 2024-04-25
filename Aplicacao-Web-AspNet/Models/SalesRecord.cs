@@ -1,12 +1,17 @@
 ﻿using Aplicacao_Web_AspNet.Models.Enums;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Aplicacao_Web_AspNet.Models
 {
     public class SalesRecord
     {
         public int Id { get; set; }
+
+        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}")]
         public DateTime Date { get; set; }
+
+        [DataType(DataType.Currency)]
         public double  Amount { get; set; }
         public SaleStatus Status { get; set; }
         public Seller Seller { get; set; }
